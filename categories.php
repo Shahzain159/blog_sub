@@ -2,6 +2,24 @@
 include_once 'header.php';
 
 
+if(isset($_GET["did"])){
+    $d = $_GET["did"];
+    $res =  mysqli_query($conn,"DELETE FROM blog_category WHERE cat_id = $d");
+    if($res){
+        echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Category Deleted</strong>
+        <button type="button" class="btn" data-bs-dismiss="alert" aria-label="Close" style="margin-left:50rem ; font-size:25px">X</button>
+      </div>';
+       // header('Location:category.php?mess=Category Deleted');
+    }
+}
+
+if(isset($_GET["mess"])){
+   
+}
+
+
+
 if($_SERVER["REQUEST_METHOD"]=="POST"){
     $name =  clean($_POST["cat_name"]);
 
@@ -30,7 +48,7 @@ $data = mysqli_query($conn,"SELECT * FROM blog_category");
                                     <thead>
                                         <tr>
                                             <th>Name</th>
-                                          
+                                            <th>Delete</th>
                                         </tr>
                                     </thead>
                                 
@@ -38,7 +56,10 @@ $data = mysqli_query($conn,"SELECT * FROM blog_category");
                                     
                                         <?php
                                             while($row = mysqli_fetch_assoc($data)){
-                                                echo '<tr><td>'.$row["cat_name"].'</td></tr>';
+                                                echo '<tr>
+                                                <td>'.$row["cat_name"].'</td>
+                                                <td><a class="btn btn-secondary" href="categories.php?did='.$row["cat_id"].'">Delete</a></td>
+                                                </tr>';
                                             }
                                         ?>
                                        
