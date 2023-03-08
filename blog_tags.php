@@ -14,7 +14,7 @@ if(isset($_GET["bid"])){
 
 }
 else{
-    header('Location:all_blofs.php');
+    header('Location:all_blogs.php');
 }
 
 
