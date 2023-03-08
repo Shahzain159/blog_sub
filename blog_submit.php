@@ -1,7 +1,6 @@
 <?php
 include_once 'header.php';
 
-$res = mysqli_query($conn,"SELECT * FROM blog_category");
 
 
 if($_SERVER["REQUEST_METHOD"]=="POST"){
@@ -11,12 +10,36 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     $blog_content =  $_POST["blog_content"];
     $blog_cat =  $_POST["blog_cat"];
     $blog_meta =  $_POST["blog_meta"];
-    $name =  $_POST["blog_name"];
+    $blog_video =  $_POST["blog_video"];
 
-    $query = "INSERT INTO blog_category VALUES(NULL,'$name')";
+    $path = "";
+    //print_r($_FILES);
+    if($_FILES["blog_image"]["size"] > 0){
+        $fname = $_FILES["blog_image"]["name"];
+        $tmp_data = $_FILES["blog_image"]["tmp_name"];
+        $ext = pathinfo($fname, PATHINFO_EXTENSION);
+        $ext_arr = array("jpeg","JPEG","PNG","png","jfif","JFIF");
+
+        if(in_array($ext,$ext_arr)){
+            $path = 'img/blog_images/'.time().$fname;
+            move_uploaded_file($tmp_data,$path);
+        }
+
+    }
+
+    $query = "INSERT INTO blogs 
+    VALUES(NULL,'$blog_name','$blog_title','$blog_author','$path','$blog_video','$blog_content',CURRENT_TIMESTAMP(),$blog_cat,'$blog_meta')";
+
     $res = mysqli_query($conn,$query);
+
+    echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+    Blog Add Successfully
+    <button type="button" class="btn" data-bs-dismiss="alert" aria-label="Close" style="margin-left:50rem ; font-size:25px">X</button>
+  </div>';
+
 }
 
+$res = mysqli_query($conn,"SELECT * FROM blog_category");
 
 ?>
 <center>
@@ -36,7 +59,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
         <select class="form-control" name="blog_cat">
             <?php
                 while($row = mysqli_fetch_assoc($res)){
-                    echo '<option>'.$row["cat_name"].'</option>';
+                    echo '<option value="'.$row["cat_id"].'">'.$row["cat_name"].'</option>';
                 }
 
             ?>
