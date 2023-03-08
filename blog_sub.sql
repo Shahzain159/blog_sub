@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 07, 2023 at 08:31 PM
+-- Generation Time: Mar 08, 2023 at 07:13 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -50,8 +50,17 @@ CREATE TABLE `blogs` (
   `blog_content` mediumtext NOT NULL,
   `blog_publish_date` date NOT NULL,
   `blog_category` int(55) NOT NULL,
-  `blog_meta_titles` varchar(2555) DEFAULT NULL
+  `blog_meta_titles` varchar(2555) DEFAULT NULL,
+  `blog_status` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `blogs`
+--
+
+INSERT INTO `blogs` (`blog_id`, `blog_name`, `blog_title`, `blog_author_name`, `blog_image`, `blog_video`, `blog_content`, `blog_publish_date`, `blog_category`, `blog_meta_titles`, `blog_status`) VALUES
+(7, 'Armand Bell', 'Alias est eaque adip', 'Ad est adipisci ulla', 'img/blog_images/1678295733apple-iphone-x-pictures-5.png', 'Voluptate vitae alia', 'Accusamus et ex expl', '2023-03-08', 9, 'Nobis eligendi exerc', 0),
+(8, 'Audra Ingram', 'In impedit est ulla', 'Sed corrupti in dol', 'img/blog_images/1678296588aaa.png', 'In ut repudiandae ut', 'Amet non sequi lore', '2023-03-08', 9, 'Ex rerum quibusdam m', 0);
 
 -- --------------------------------------------------------
 
@@ -69,9 +78,7 @@ CREATE TABLE `blog_category` (
 --
 
 INSERT INTO `blog_category` (`cat_id`, `cat_name`) VALUES
-(1, 'cat1'),
-(2, 'safsa'),
-(3, 'dagd');
+(9, 'cat2');
 
 -- --------------------------------------------------------
 
@@ -129,13 +136,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `blogs`
 --
 ALTER TABLE `blogs`
-  MODIFY `blog_id` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `blog_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `blog_category`
 --
 ALTER TABLE `blog_category`
-  MODIFY `cat_id` int(55) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `cat_id` int(55) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `blog_tags`
