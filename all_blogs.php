@@ -98,7 +98,7 @@ $res = mysqli_query($conn, "SELECT b.blog_id,b.blog_name,b.blog_title,c.cat_name
 
                                                 <td>
                                                     <a class="btn btn-primary" href="view_blog.php?bid='.$row["blog_id"].'">View</a>
-                                                    <a class="btn btn-secondary ml-2">Tags</a>
+                                                    <a class="btn btn-secondary ml-2" href="blog_tags.php?bid='.$row["blog_id"].'">Tags</a>
                                                     <a class="btn btn-secondary ml-2">Update</a>
 
                                                     <a class="btn btn-secondary" id="delete" href="#" data-id="' . $row["blog_id"] . '" data-toggle="modal" data-target="#deleteblog">
