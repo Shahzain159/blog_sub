@@ -28,7 +28,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     }
 
     $query = "INSERT INTO blogs 
-    VALUES(NULL,'$blog_name','$blog_title','$blog_author','$path','$blog_video','$blog_content',CURRENT_TIMESTAMP(),$blog_cat,'$blog_meta')";
+    VALUES(NULL,'$blog_name','$blog_title','$blog_author','$path','$blog_video','$blog_content',CURRENT_TIMESTAMP(),$blog_cat,'$blog_meta',0)";
 
     $res = mysqli_query($conn,$query);
 
