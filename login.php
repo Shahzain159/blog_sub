@@ -1,3 +1,26 @@
+
+<?php
+
+// $email = 'admin@gmail.com';
+// $pass = 'admin123';
+
+if($_SERVER["REQUEST_METHOD"]=="POST"){
+    $email =  $_POST["name"];
+    $pass = $_POST["password"];
+
+    $res = mysqli_query(mysqli_connect("localhost","root","","blog_sub"),"SELECT * FROM admin WHERE admin_email = '$email'");
+
+    if(mysqli_num_rows($res) > 0){
+
+        $row = mysqli_fetch_assoc($res);
+        session_start();
+        
+        $_SESSION["admin"] = $row;
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,14 +64,14 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                     </div>
-                                    <form class="user">
+                                    <form class="user" method="post">
                                         <div class="form-group">
                                             <input type="email" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
+                                                id="exampleInputEmail" name="email" aria-describedby="emailHelp"
                                                 placeholder="Enter Email Address...">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user"
+                                            <input type="password" name="password" class="form-control form-control-user"
                                                 id="exampleInputPassword" placeholder="Password">
                                         </div>
                                         <div class="form-group">
@@ -58,9 +81,9 @@
                                                     Me</label>
                                             </div>
                                         </div>
-                                        <a href="index.html" class="btn btn-primary btn-user btn-block">
+                                        <button type="submit" class="btn btn-primary btn-user btn-block">
                                             Login
-                                        </a>
+                                        </button>
                                         
                                         <!-- <a href="index.html" class="btn btn-google btn-user btn-block">
                                             <i class="fab fa-google fa-fw"></i> Login with Google
