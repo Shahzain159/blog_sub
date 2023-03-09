@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 08, 2023 at 07:13 PM
--- Server version: 10.4.25-MariaDB
--- PHP Version: 8.1.10
+-- Generation Time: Mar 09, 2023 at 12:58 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -34,6 +34,13 @@ CREATE TABLE `admin` (
   `admin_pass` varchar(55) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`admin_id`, `admin_name`, `admin_email`, `admin_pass`) VALUES
+(1, 'admin', 'admin@gmail.com', '$2y$10$NkxoBlswfa4HmCBlTqdQc.ucfWkkArhPmpDU0kODk30Xczrp');
+
 -- --------------------------------------------------------
 
 --
@@ -59,8 +66,8 @@ CREATE TABLE `blogs` (
 --
 
 INSERT INTO `blogs` (`blog_id`, `blog_name`, `blog_title`, `blog_author_name`, `blog_image`, `blog_video`, `blog_content`, `blog_publish_date`, `blog_category`, `blog_meta_titles`, `blog_status`) VALUES
-(7, 'Armand Bell', 'Alias est eaque adip', 'Ad est adipisci ulla', 'img/blog_images/1678295733apple-iphone-x-pictures-5.png', 'Voluptate vitae alia', 'Accusamus et ex expl', '2023-03-08', 9, 'Nobis eligendi exerc', 0),
-(8, 'Audra Ingram', 'In impedit est ulla', 'Sed corrupti in dol', 'img/blog_images/1678296588aaa.png', 'In ut repudiandae ut', 'Amet non sequi lore', '2023-03-08', 9, 'Ex rerum quibusdam m', 0);
+(13, 'Fritz Hunt234', 'Et facilis neque ut 2356', 'Qui sit corporis vi2354', '', ' Deleniti explicabo 23546', 'Aut nulla est est 236546', '2023-03-09', 9, '  Deleniti explicabo 23546', 0),
+(14, 'Fritz Hunt234', 'Et facilis neque ut 234', 'Qui sit corporis vi234', '', ' Deleniti explicabo 234', 'Aut nulla est est 234', '2023-03-09', 9, '  Deleniti explicabo 234', 0);
 
 -- --------------------------------------------------------
 
@@ -78,7 +85,8 @@ CREATE TABLE `blog_category` (
 --
 
 INSERT INTO `blog_category` (`cat_id`, `cat_name`) VALUES
-(9, 'cat2');
+(9, 'cat2'),
+(10, 'dasd');
 
 -- --------------------------------------------------------
 
@@ -91,6 +99,15 @@ CREATE TABLE `blog_tags` (
   `tag_name` varchar(255) NOT NULL,
   `tag_blog_id` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `blog_tags`
+--
+
+INSERT INTO `blog_tags` (`tag_id`, `tag_name`, `tag_blog_id`) VALUES
+(21, 'asdasd', 13),
+(22, 'asd', 13),
+(23, 'asds', 13);
 
 --
 -- Indexes for dumped tables
@@ -130,25 +147,25 @@ ALTER TABLE `blog_tags`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `admin_id` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `admin_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `blogs`
 --
 ALTER TABLE `blogs`
-  MODIFY `blog_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `blog_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `blog_category`
 --
 ALTER TABLE `blog_category`
-  MODIFY `cat_id` int(55) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `cat_id` int(55) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `blog_tags`
 --
 ALTER TABLE `blog_tags`
-  MODIFY `tag_id` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `tag_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- Constraints for dumped tables
