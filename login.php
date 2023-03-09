@@ -5,7 +5,7 @@
 // $pass = 'admin123';
 
 if($_SERVER["REQUEST_METHOD"]=="POST"){
-    $email =  $_POST["name"];
+    $email =  $_POST["email"];
     $pass = $_POST["password"];
 
     $res = mysqli_query(mysqli_connect("localhost","root","","blog_sub"),"SELECT * FROM admin WHERE admin_email = '$email'");
@@ -16,6 +16,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
         session_start();
         
         $_SESSION["admin"] = $row;
+
+        header('Location:index.php');
     }
 }
 
