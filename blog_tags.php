@@ -1,12 +1,20 @@
 <?php
 include_once 'header.php';
 
+
+if(isset($_GET["did"])){
+    $did = $_GET["did"];
+    mysqli_query($conn,"DELETE FROM blog_tags WHERE tag_id = $did");
+    
+}
+
+
 if($_SERVER["REQUEST_METHOD"]=="POST"){
     $n = $_POST["tag_name"];
     $bid = $_GET["bid"];
     mysqli_query($conn,"INSERT INTO blog_tags VALUES (NULL,'$n',$bid)");
 }
-
+$bid = 0;
 if(isset($_GET["bid"])){
     $bid = $_GET["bid"];
 
@@ -19,6 +27,7 @@ else{
 
 
 ?>
+<a href="all_blogs.php"> <- back</a>
 <div class="w-50 mb-3">
     <form action="" method="post">
         <input type="text" name="tag_name" class="form-control mt-3" id="">
@@ -44,7 +53,7 @@ else{
                                             while($row = mysqli_fetch_assoc($res)){
                                                 echo ' <tr>
                                                 <td>'.$row["tag_name"].'</td>
-                                                <td>'.$row["tag_id"].'</td>
+                                                <td><a class="btn btn-danger" href="blog_tags.php?bid='.$bid.'&did='.$row["tag_id"].'">Delete</a></td>
                                             </tr>';
                                             }
                                         ?>

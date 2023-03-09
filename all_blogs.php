@@ -14,8 +14,13 @@ if (isset($_GET["dec"])) {
 
 if(isset($_POST["del_btn"])){
     $did = $_POST["del_id"];
+   // echo $did;
     $row= mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM blogs WHERE blog_id = $did"));
-    unlink($row["blog_image"]);
+    
+    if(file_exists($row["blog_image"])){
+        unlink($row["blog_image"]);
+    }
+   
     $res =  mysqli_query($conn,"DELETE FROM blogs WHERE blog_id = $did");
     if($res){
         echo '<div class="alert alert-success alert-dismissible fade show" role="alert">

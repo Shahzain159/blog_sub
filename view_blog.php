@@ -1,6 +1,8 @@
 <?php
 include_once 'header.php';
 
+
+echo '<a href="all_blogs.php"> <- back</a>';
 $row ;
 if(isset($_GET["bid"])){
     $bid = $_GET["bid"];
