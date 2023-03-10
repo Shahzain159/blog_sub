@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 09, 2023 at 12:58 PM
+-- Generation Time: Mar 10, 2023 at 09:30 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -66,8 +66,7 @@ CREATE TABLE `blogs` (
 --
 
 INSERT INTO `blogs` (`blog_id`, `blog_name`, `blog_title`, `blog_author_name`, `blog_image`, `blog_video`, `blog_content`, `blog_publish_date`, `blog_category`, `blog_meta_titles`, `blog_status`) VALUES
-(13, 'Fritz Hunt234', 'Et facilis neque ut 2356', 'Qui sit corporis vi2354', '', ' Deleniti explicabo 23546', 'Aut nulla est est 236546', '2023-03-09', 9, '  Deleniti explicabo 23546', 0),
-(14, 'Fritz Hunt234', 'Et facilis neque ut 234', 'Qui sit corporis vi234', '', ' Deleniti explicabo 234', 'Aut nulla est est 234', '2023-03-09', 9, '  Deleniti explicabo 234', 0);
+(15, 'Sylvester Bauer', 'Voluptas accusamus d', 'Non consequuntur con', 'img/blog_images/1678435484iphone-14-pro-max-deeppurple-witb-202209_FMT_WHH.jfif', 'Dolor at aut enim qu', 'Non debitis quisquam', '2023-03-10', 13, 'Dolores animi ut od', 1);
 
 -- --------------------------------------------------------
 
@@ -86,7 +85,9 @@ CREATE TABLE `blog_category` (
 
 INSERT INTO `blog_category` (`cat_id`, `cat_name`) VALUES
 (9, 'cat2'),
-(10, 'dasd');
+(13, 'Cat3'),
+(14, 'cat4'),
+(15, 'cat5');
 
 -- --------------------------------------------------------
 
@@ -99,15 +100,6 @@ CREATE TABLE `blog_tags` (
   `tag_name` varchar(255) NOT NULL,
   `tag_blog_id` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `blog_tags`
---
-
-INSERT INTO `blog_tags` (`tag_id`, `tag_name`, `tag_blog_id`) VALUES
-(21, 'asdasd', 13),
-(22, 'asd', 13),
-(23, 'asds', 13);
 
 --
 -- Indexes for dumped tables
@@ -153,13 +145,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `blogs`
 --
 ALTER TABLE `blogs`
-  MODIFY `blog_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `blog_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `blog_category`
 --
 ALTER TABLE `blog_category`
-  MODIFY `cat_id` int(55) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `cat_id` int(55) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `blog_tags`
@@ -175,7 +167,7 @@ ALTER TABLE `blog_tags`
 -- Constraints for table `blogs`
 --
 ALTER TABLE `blogs`
-  ADD CONSTRAINT `FK_Cat_Blog` FOREIGN KEY (`blog_category`) REFERENCES `blog_category` (`cat_id`);
+  ADD CONSTRAINT `FK_Cat_Blog` FOREIGN KEY (`blog_category`) REFERENCES `blog_category` (`cat_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `blog_tags`
