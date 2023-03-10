@@ -17,7 +17,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
         
         $_SESSION["admin"] = $row;
 
-        header('Location:index.php');
+        header('Location:all_blogs.php');
     }
 }
 
