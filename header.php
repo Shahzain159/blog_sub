@@ -4,6 +4,13 @@ $conn = mysqli_connect("localhost","root","","blog_sub");
 
 session_start();
 
+if(isset($_SESSION["admin"])){
+    
+}
+else{
+    header('Location:login.php');
+}
+
 function clean($string) {
     $string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
  
@@ -161,7 +168,7 @@ function clean($string) {
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="logout.php">
+                <a class="nav-link" data-toggle="modal" data-target="#logoutModal">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Logout</span></a>
             </li>
